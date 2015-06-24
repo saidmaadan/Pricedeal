@@ -1,1 +1,26 @@
 @import "bootstrap";
+
+*{
+	margin: 0;
+}
+
+body{
+	font-family: Arial, Helvetical, sans-serif;
+}
+
+.navbar-default{
+	background-color: red;
+}
+.navbar-default .navbar-brand{
+	font-family: guardian-egyptt, georgia, serif;
+	font-weight: 400;
+	color: #d5641c;
+	font-size: 30px;
+}
+
+.navbar-default .navbar-nav > li > a{
+	font-family:  Arial, Helvetical, sans-serif;
+	font-weight: 900;
+	color: #ddd;
+	font-size: 14px;
+}
