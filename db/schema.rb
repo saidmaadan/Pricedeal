@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150625053242) do
+ActiveRecord::Schema.define(version: 20150625155123) do
 
   create_table "products", force: true do |t|
     t.string   "name"
@@ -38,6 +38,18 @@ ActiveRecord::Schema.define(version: 20150625053242) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "website"
+    t.string   "phone"
+    t.string   "address"
+    t.string   "twitter"
+    t.text     "about"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "username"
   end
 
   add_index "sellers", ["email"], name: "index_sellers_on_email", unique: true
