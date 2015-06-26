@@ -1,12 +1,16 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  before_filter :authenticate_seller!, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :authenticate_seller!, only: [:store, :new, :create, :edit, :update, :destroy]
   before_filter :check_seller, only: [:edit, :update, :destroy]
 
+
+  def store
+    @products = Product.where(seller: current_seller).order("created_at DESC")
+  end
   # GET /products
   # GET /products.json
   def index
-    @products = Product.all
+    @products = Product.all.order("created_at DESC")
   end
 
   # GET /products/1
