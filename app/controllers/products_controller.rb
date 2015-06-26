@@ -1,5 +1,7 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_seller!, only: [:new, :create, :edit, :update, :destroy]
+  before_filter :check_seller, only: [:edit, :update, :destroy]
 
   # GET /products
   # GET /products.json
@@ -71,5 +73,11 @@ class ProductsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
       params.require(:product).permit(:name, :description, :price, :image)
+    end
+
+    def check_seller
+      if current_seller != @product.seller
+        redirect_to root_url, alert: "Sorry, you are not authorized, the product belongs to someone else"
+      end
     end
 end
