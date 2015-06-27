@@ -1,6 +1,11 @@
 Rails.application.routes.draw do
+  
+
+  devise_for :buyers
   devise_for :sellers
-  resources :products
+  resources :products do
+    resources :orders
+  end
   get 'store' => "products#store"
   root 'products#index'
 

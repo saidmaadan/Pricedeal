@@ -11,7 +11,47 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150626072533) do
+ActiveRecord::Schema.define(version: 20150627163905) do
+
+  create_table "buyers", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "apt"
+    t.string   "zip_code"
+    t.string   "country"
+  end
+
+  add_index "buyers", ["email"], name: "index_buyers_on_email", unique: true
+  add_index "buyers", ["reset_password_token"], name: "index_buyers_on_reset_password_token", unique: true
+
+  create_table "orders", force: true do |t|
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "apt"
+    t.string   "zip_code"
+    t.string   "country"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "product_id"
+    t.integer  "buyer_id"
+    t.integer  "seller_id"
+  end
 
   create_table "products", force: true do |t|
     t.string   "name"

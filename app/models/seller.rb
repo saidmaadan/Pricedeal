@@ -19,4 +19,5 @@ class Seller < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
     has_many :products, dependent: :destroy
+    has_many :orders
 end
